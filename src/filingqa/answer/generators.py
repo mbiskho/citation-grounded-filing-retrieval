@@ -27,14 +27,19 @@ import os
 import re
 from typing import Protocol
 
-from ..models import Answer, Chunk, Citation, Scored, Verdict, split_sentences
+from ..models import Answer, Chunk, Citation, Filing, Scored, Verdict, split_sentences
 from ..retrieval.tokenize import tokenize
 
 
 class Generator(Protocol):
     name: str
 
-    def generate(self, question: str, results: list[Scored]) -> Answer: ...
+    def generate(
+        self,
+        question: str,
+        results: list[Scored],
+        filings: dict[str, Filing] | None = None,
+    ) -> Answer: ...
 
 
 # --------------------------------------------------------------------------
@@ -42,26 +47,47 @@ class Generator(Protocol):
 # --------------------------------------------------------------------------
 
 
-def _sentence_spans_in_chunk(chunk: Chunk) -> list[tuple[str, int, int]]:
+def _sentence_spans_in_chunk(
+    chunk: Chunk, filings: dict[str, Filing] | None = None
+) -> list[tuple[str, int, int]]:
     """Quotable units of a chunk with absolute spans into the filing text.
 
-    The section prefix added at chunk time is stripped first; it is display
-    furniture and is not present in the source document, so citing it would
-    produce a span that does not verify.
+    **Units are cut from the source text, not from `chunk.text`.** That
+    distinction is the whole correctness argument here, and getting it wrong
+    is subtle:
+
+    A prose chunk is built by joining sentences from several blocks with a
+    single space, while the source separates those blocks with "\\n\\n". So an
+    offset computed by searching inside the reconstructed chunk drifts by one
+    character for every block boundary the chunk crosses. The resulting
+    citation is *nearly* right - off by two or three characters - which
+    verification catches as an 88% token overlap and reports as a refusal.
+    An answerable question is lost to an arithmetic error.
+
+    Slicing the filing and splitting that removes the class of bug entirely:
+    the quote is, by construction, exactly the characters the span points at.
+
+    Falls back to the chunk text when no filing is supplied, so the generator
+    still works standalone (in tests, say) - just with the caveat above.
 
     **Tables are split by row, not by sentence.** A rendered table contains no
     sentence-ending punctuation, so a sentence splitter returns the entire
     table as one unit - which then gets quoted whole. That produced 5,000-plus
     character "quotes" that failed span verification for pointing at a section
-    rather than a claim, and turned three answerable questions into refusals.
-    Row-level spans are also what an analyst actually wants: the citation
-    should land on the line carrying the number.
+    rather than a claim. Row-level spans are also what an analyst wants: the
+    citation should land on the line carrying the number.
     """
-    body = chunk.text
-    offset = chunk.start
-    if body.startswith("[") and "]\n" in body:
-        prefix, body = body.split("]\n", 1)
-        del prefix  # the prefix occupies no space in the source text
+    filing = (filings or {}).get(chunk.doc_id)
+    if filing is not None:
+        body = filing.text[chunk.start : chunk.end]
+        offset = chunk.start
+    else:
+        body = chunk.text
+        offset = chunk.start
+        if body.startswith("[") and "]\n" in body:
+            # The section prefix is display furniture and occupies no space in
+            # the source document.
+            body = body.split("]\n", 1)[1]
 
     units = (
         [line for line in body.split("\n") if line.strip()]
@@ -132,13 +158,20 @@ class ExtractiveGenerator:
             coverage *= 0.6
         return coverage
 
-    def generate(self, question: str, results: list[Scored]) -> Answer:
+    def generate(
+        self,
+        question: str,
+        results: list[Scored],
+        filings: dict[str, Filing] | None = None,
+    ) -> Answer:
         query_tokens = set(tokenize(question))
         scored: list[tuple[float, str, Chunk, int, int]] = []
 
         for position, result in enumerate(results):
             per_chunk = 0
-            for order, (sentence, start, end) in enumerate(_sentence_spans_in_chunk(result.chunk)):
+            for order, (sentence, start, end) in enumerate(
+                _sentence_spans_in_chunk(result.chunk, filings)
+            ):
                 if len(sentence) < 25:
                     continue
                 score = self._score_sentence(query_tokens, sentence)
@@ -297,7 +330,12 @@ class LLMGenerator:
         ) / 1_000_000
         return json.loads(body["choices"][0]["message"]["content"])
 
-    def generate(self, question: str, results: list[Scored]) -> Answer:
+    def generate(
+        self,
+        question: str,
+        results: list[Scored],
+        filings: dict[str, Filing] | None = None,
+    ) -> Answer:
         context, used = self._context(results)
         try:
             payload = self._call(question, context)

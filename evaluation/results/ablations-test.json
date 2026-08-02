@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T03:14:13+00:00",
+  "generated_at": "2026-08-02T07:18:50+00:00",
   "python": "3.10.12",
   "split": "test",
   "questions": 63,
@@ -45,30 +45,30 @@
       },
       "refusal": {
         "correctly_refused": 13,
-        "wrongly_refused": 2,
+        "wrongly_refused": 0,
         "missed_refusals": 8,
-        "correctly_answered": 40,
-        "refusal_precision": 0.8667,
+        "correctly_answered": 42,
+        "refusal_precision": 1.0,
         "refusal_recall": 0.619,
-        "refusal_f1": 0.7222,
-        "answer_rate_on_answerable": 0.9524
+        "refusal_f1": 0.7647,
+        "answer_rate_on_answerable": 1.0
       },
       "citations": {
         "answers": 63,
-        "answered": 48,
-        "refused": 15,
-        "total_citations": 192,
-        "verified_citations": 192,
+        "answered": 50,
+        "refused": 13,
+        "total_citations": 200,
+        "verified_citations": 200,
         "citation_accuracy": 1.0,
         "citations_per_answer": 4.0,
         "answers_with_uncited_claims": 0,
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 15.55,
-        "p95": 27.62,
-        "p99": 49.04,
-        "mean": 14.52
+        "p50": 16.38,
+        "p95": 40.66,
+        "p99": 50.76,
+        "mean": 16.0
       },
       "is_full_system": false
     },
@@ -112,30 +112,30 @@
       },
       "refusal": {
         "correctly_refused": 13,
-        "wrongly_refused": 1,
+        "wrongly_refused": 0,
         "missed_refusals": 8,
-        "correctly_answered": 41,
-        "refusal_precision": 0.9286,
+        "correctly_answered": 42,
+        "refusal_precision": 1.0,
         "refusal_recall": 0.619,
-        "refusal_f1": 0.7429,
-        "answer_rate_on_answerable": 0.9762
+        "refusal_f1": 0.7647,
+        "answer_rate_on_answerable": 1.0
       },
       "citations": {
         "answers": 63,
-        "answered": 49,
-        "refused": 14,
-        "total_citations": 193,
-        "verified_citations": 193,
+        "answered": 50,
+        "refused": 13,
+        "total_citations": 197,
+        "verified_citations": 197,
         "citation_accuracy": 1.0,
-        "citations_per_answer": 3.938775510204082,
+        "citations_per_answer": 3.94,
         "answers_with_uncited_claims": 0,
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 15.65,
-        "p95": 27.84,
-        "p99": 42.57,
-        "mean": 14.48
+        "p50": 16.85,
+        "p95": 28.51,
+        "p99": 42.34,
+        "mean": 15.16
       },
       "is_full_system": true
     },
@@ -179,30 +179,30 @@
       },
       "refusal": {
         "correctly_refused": 13,
-        "wrongly_refused": 2,
+        "wrongly_refused": 0,
         "missed_refusals": 8,
-        "correctly_answered": 40,
-        "refusal_precision": 0.8667,
+        "correctly_answered": 42,
+        "refusal_precision": 1.0,
         "refusal_recall": 0.619,
-        "refusal_f1": 0.7222,
-        "answer_rate_on_answerable": 0.9524
+        "refusal_f1": 0.7647,
+        "answer_rate_on_answerable": 1.0
       },
       "citations": {
         "answers": 63,
-        "answered": 48,
-        "refused": 15,
-        "total_citations": 182,
-        "verified_citations": 182,
+        "answered": 50,
+        "refused": 13,
+        "total_citations": 189,
+        "verified_citations": 189,
         "citation_accuracy": 1.0,
-        "citations_per_answer": 3.7916666666666665,
+        "citations_per_answer": 3.78,
         "answers_with_uncited_claims": 0,
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 4.5,
-        "p95": 7.91,
-        "p99": 8.03,
-        "mean": 4.16
+        "p50": 5.15,
+        "p95": 8.95,
+        "p99": 10.62,
+        "mean": 5.93
       },
       "is_full_system": false
     },
@@ -246,30 +246,30 @@
       },
       "refusal": {
         "correctly_refused": 13,
-        "wrongly_refused": 1,
+        "wrongly_refused": 0,
         "missed_refusals": 8,
-        "correctly_answered": 41,
-        "refusal_precision": 0.9286,
+        "correctly_answered": 42,
+        "refusal_precision": 1.0,
         "refusal_recall": 0.619,
-        "refusal_f1": 0.7429,
-        "answer_rate_on_answerable": 0.9762
+        "refusal_f1": 0.7647,
+        "answer_rate_on_answerable": 1.0
       },
       "citations": {
         "answers": 63,
-        "answered": 49,
-        "refused": 14,
-        "total_citations": 193,
-        "verified_citations": 193,
+        "answered": 50,
+        "refused": 13,
+        "total_citations": 197,
+        "verified_citations": 197,
         "citation_accuracy": 1.0,
-        "citations_per_answer": 3.938775510204082,
+        "citations_per_answer": 3.94,
         "answers_with_uncited_claims": 0,
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 17.98,
-        "p95": 25.26,
-        "p99": 44.55,
-        "mean": 15.32
+        "p50": 19.64,
+        "p95": 28.46,
+        "p99": 46.25,
+        "mean": 16.95
       },
       "is_full_system": false
     },
@@ -313,30 +313,30 @@
       },
       "refusal": {
         "correctly_refused": 13,
-        "wrongly_refused": 1,
+        "wrongly_refused": 0,
         "missed_refusals": 8,
-        "correctly_answered": 41,
-        "refusal_precision": 0.9286,
+        "correctly_answered": 42,
+        "refusal_precision": 1.0,
         "refusal_recall": 0.619,
-        "refusal_f1": 0.7429,
-        "answer_rate_on_answerable": 0.9762
+        "refusal_f1": 0.7647,
+        "answer_rate_on_answerable": 1.0
       },
       "citations": {
         "answers": 63,
-        "answered": 49,
-        "refused": 14,
-        "total_citations": 193,
-        "verified_citations": 193,
+        "answered": 50,
+        "refused": 13,
+        "total_citations": 197,
+        "verified_citations": 197,
         "citation_accuracy": 1.0,
-        "citations_per_answer": 3.938775510204082,
+        "citations_per_answer": 3.94,
         "answers_with_uncited_claims": 0,
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 19.12,
-        "p95": 62.41,
-        "p99": 69.02,
-        "mean": 21.99
+        "p50": 22.17,
+        "p95": 70.86,
+        "p99": 93.07,
+        "mean": 28.71
       },
       "is_full_system": false
     },
@@ -400,10 +400,10 @@
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 36.88,
-        "p95": 61.41,
-        "p99": 213.39,
-        "mean": 37.42
+        "p50": 39.44,
+        "p95": 177.47,
+        "p99": 220.19,
+        "mean": 52.69
       },
       "is_full_system": false
     },
@@ -447,30 +447,30 @@
       },
       "refusal": {
         "correctly_refused": 13,
-        "wrongly_refused": 2,
+        "wrongly_refused": 0,
         "missed_refusals": 8,
-        "correctly_answered": 40,
-        "refusal_precision": 0.8667,
+        "correctly_answered": 42,
+        "refusal_precision": 1.0,
         "refusal_recall": 0.619,
-        "refusal_f1": 0.7222,
-        "answer_rate_on_answerable": 0.9524
+        "refusal_f1": 0.7647,
+        "answer_rate_on_answerable": 1.0
       },
       "citations": {
         "answers": 63,
-        "answered": 48,
-        "refused": 15,
-        "total_citations": 192,
-        "verified_citations": 192,
+        "answered": 50,
+        "refused": 13,
+        "total_citations": 200,
+        "verified_citations": 200,
         "citation_accuracy": 1.0,
         "citations_per_answer": 4.0,
         "answers_with_uncited_claims": 0,
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 25.16,
-        "p95": 76.23,
-        "p99": 100.68,
-        "mean": 29.12
+        "p50": 28.64,
+        "p95": 82.91,
+        "p99": 105.8,
+        "mean": 31.89
       },
       "is_full_system": false
     },
@@ -514,30 +514,30 @@
       },
       "refusal": {
         "correctly_refused": 13,
-        "wrongly_refused": 1,
+        "wrongly_refused": 0,
         "missed_refusals": 8,
-        "correctly_answered": 41,
-        "refusal_precision": 0.9286,
+        "correctly_answered": 42,
+        "refusal_precision": 1.0,
         "refusal_recall": 0.619,
-        "refusal_f1": 0.7429,
-        "answer_rate_on_answerable": 0.9762
+        "refusal_f1": 0.7647,
+        "answer_rate_on_answerable": 1.0
       },
       "citations": {
         "answers": 63,
-        "answered": 49,
-        "refused": 14,
-        "total_citations": 193,
-        "verified_citations": 193,
+        "answered": 50,
+        "refused": 13,
+        "total_citations": 197,
+        "verified_citations": 197,
         "citation_accuracy": 1.0,
-        "citations_per_answer": 3.938775510204082,
+        "citations_per_answer": 3.94,
         "answers_with_uncited_claims": 0,
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 23.27,
-        "p95": 54.26,
-        "p99": 95.4,
-        "mean": 27.08
+        "p50": 32.0,
+        "p95": 118.2,
+        "p99": 122.76,
+        "mean": 40.05
       },
       "is_full_system": false
     }

@@ -190,7 +190,7 @@ class FilingQA:
                     confidence,
                 )
 
-        answer = self.generator.generate(question, results)
+        answer = self.generator.generate(question, results, self.filings)
         answer.confidence = confidence
         answer = verify_answer(answer, self.filings)
         answer.latency_ms = (time.perf_counter() - started) * 1000

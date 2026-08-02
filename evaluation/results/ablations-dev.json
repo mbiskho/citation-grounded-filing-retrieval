@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T03:14:19+00:00",
+  "generated_at": "2026-08-02T07:18:57+00:00",
   "python": "3.10.12",
   "split": "dev",
   "questions": 37,
@@ -65,10 +65,10 @@
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 15.16,
-        "p95": 22.58,
-        "p99": 28.5,
-        "mean": 12.65
+        "p50": 19.28,
+        "p95": 31.02,
+        "p99": 58.48,
+        "mean": 17.27
       },
       "is_full_system": false
     },
@@ -132,10 +132,10 @@
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 14.91,
-        "p95": 22.15,
-        "p99": 24.19,
-        "mean": 12.68
+        "p50": 17.66,
+        "p95": 29.97,
+        "p99": 30.54,
+        "mean": 15.5
       },
       "is_full_system": true
     },
@@ -199,10 +199,10 @@
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 4.22,
-        "p95": 5.95,
-        "p99": 8.67,
-        "mean": 3.54
+        "p50": 5.5,
+        "p95": 11.92,
+        "p99": 18.19,
+        "mean": 5.42
       },
       "is_full_system": false
     },
@@ -266,10 +266,10 @@
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 17.49,
-        "p95": 25.24,
-        "p99": 26.33,
-        "mean": 14.55
+        "p50": 18.74,
+        "p95": 31.45,
+        "p99": 35.56,
+        "mean": 16.65
       },
       "is_full_system": false
     },
@@ -333,10 +333,10 @@
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 19.35,
-        "p95": 37.35,
-        "p99": 38.72,
-        "mean": 18.2
+        "p50": 21.15,
+        "p95": 39.96,
+        "p99": 41.19,
+        "mean": 20.6
       },
       "is_full_system": false
     },
@@ -400,10 +400,10 @@
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 33.84,
-        "p95": 77.64,
-        "p99": 314.13,
-        "mean": 44.64
+        "p50": 36.25,
+        "p95": 79.43,
+        "p99": 317.55,
+        "mean": 45.12
       },
       "is_full_system": false
     },
@@ -467,10 +467,10 @@
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 23.56,
-        "p95": 51.33,
-        "p99": 106.98,
-        "mean": 25.01
+        "p50": 26.7,
+        "p95": 55.06,
+        "p99": 62.75,
+        "mean": 25.97
       },
       "is_full_system": false
     },
@@ -534,10 +534,10 @@
         "uncited_claim_count": 0
       },
       "latency_ms": {
-        "p50": 24.51,
-        "p95": 46.49,
-        "p99": 50.56,
-        "mean": 23.73
+        "p50": 31.16,
+        "p95": 72.05,
+        "p99": 121.37,
+        "mean": 33.78
       },
       "is_full_system": false
     }

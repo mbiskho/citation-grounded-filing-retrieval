@@ -27,10 +27,10 @@ other 37. Full report: [`evaluation/results/report-test.md`](evaluation/results/
 
 | metric | result | target | |
 |---|---:|---:|---|
-| **Citation accuracy** | **1.000** (193/193) | — | ✅ |
+| **Citation accuracy** | **1.000** (197/197) | — | ✅ |
 | **Answers with an uncited claim** | **0** | 0 | ✅ |
-| **Refusal precision** | **0.929** | — | ✅ |
-| **Answer rate on answerable questions** | **0.976** | — | ✅ |
+| **Refusal precision** | **1.000** | — | ✅ |
+| **Answer rate on answerable questions** | **1.000** | — | ✅ |
 | **p95 latency** | **28 ms** | — | ✅ |
 | **Cost per query** | **$0.00** | — | ✅ |
 | recall@10 | 0.643 | 0.85 | ❌ |
@@ -170,8 +170,8 @@ Every citation is checked three ways before an answer is returned:
 3. the span is neither degenerate nor a whole section.
 
 Any failure downgrades the answer to a refusal. Any sentence making a claim
-without a marker downgrades it too. **193 of 193 citations verified; 0 answers
-contained an uncited claim.**
+without a marker downgrades it too. **197 of 197 citations verified; 0 answers
+contained an uncited claim, and no answerable question was refused.**
 
 The default generator is extractive — it selects sentences from retrieved
 spans and quotes them verbatim. In a consumer product that would be a
