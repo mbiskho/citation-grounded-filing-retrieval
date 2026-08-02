@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.DS_Store
+
+# Raw EDGAR HTML: ~13MB of source documents, re-fetchable with
+# `filingqa ingest`. The *parsed* filings under data/parsed/ ARE committed,
+# so the repo works and the evaluation reproduces with no network access.
+data/raw/
+
+# Indexes are derived artefacts, rebuilt by `filingqa index` in ~20s.
+data/index/

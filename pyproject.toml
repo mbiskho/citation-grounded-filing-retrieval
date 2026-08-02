@@ -1,0 +1,81 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "filingqa"
+version = "0.1.0"
+description = "Citation-grounded retrieval over SEC filings. Answers questions about 10-Ks and shows you the page."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Bisma Khomeini", email = "khomeini.bisma@gmail.com" }]
+keywords = ["rag", "retrieval", "sec", "edgar", "10-K", "citations", "fintech"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Financial and Insurance Industry",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+# The core runs on numpy alone: BM25, chunking, citation verification and the
+# offline embedder are all implemented here rather than pulled in. Anything
+# that needs a 400MB download is an extra.
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+ingest = ["beautifulsoup4>=4.12", "lxml>=4.9"]
+embeddings = ["sentence-transformers>=2.5", "torch>=2.0"]
+app = ["streamlit>=1.30"]
+postgres = ["psycopg2-binary>=2.9"]
+dev = [
+  "pytest>=7.4",
+  "pytest-cov>=4.1",
+  "ruff>=0.4",
+  "mypy>=1.8",
+  "beautifulsoup4>=4.12",
+  "lxml>=4.9",
+]
+all = [
+  "beautifulsoup4>=4.12", "lxml>=4.9", "sentence-transformers>=2.5",
+  "torch>=2.0", "streamlit>=1.30", "psycopg2-binary>=2.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/bismakhomeini/citation-grounded-filing-retrieval"
+Repository = "https://github.com/bismakhomeini/citation-grounded-filing-retrieval"
+
+[project.scripts]
+filingqa = "filingqa.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/filingqa"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
+ignore = [
+  "E501",  # handled by the formatter
+  "B008",
+]
+
+[tool.mypy]
+python_version = "3.10"
+packages = ["filingqa"]
+mypy_path = "src"
+ignore_missing_imports = true
+disallow_untyped_defs = false
+
+[tool.coverage.run]
+source = ["src/filingqa"]
