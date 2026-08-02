@@ -1,0 +1,174 @@
+{
+  "refusal": {
+    "best": {
+      "f1": 0.7200000000000001,
+      "min_top_score": 0.0,
+      "min_term_coverage": 0.0,
+      "refusal_precision": 0.8181818181818182,
+      "refusal_recall": 0.6428571428571429,
+      "answer_rate": 0.9130434782608695
+    },
+    "grid": [
+      {
+        "min_top_score": 0.0,
+        "min_term_coverage": 0.0,
+        "refusal_f1": 0.72,
+        "refusal_precision": 0.8182,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.913
+      },
+      {
+        "min_top_score": 0.0,
+        "min_term_coverage": 0.2,
+        "refusal_f1": 0.72,
+        "refusal_precision": 0.8182,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.913
+      },
+      {
+        "min_top_score": 0.0,
+        "min_term_coverage": 0.35,
+        "refusal_f1": 0.6923,
+        "refusal_precision": 0.75,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.8696
+      },
+      {
+        "min_top_score": 0.0,
+        "min_term_coverage": 0.5,
+        "refusal_f1": 0.6667,
+        "refusal_precision": 0.6923,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.8261
+      },
+      {
+        "min_top_score": 0.1,
+        "min_term_coverage": 0.0,
+        "refusal_f1": 0.72,
+        "refusal_precision": 0.8182,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.913
+      },
+      {
+        "min_top_score": 0.1,
+        "min_term_coverage": 0.2,
+        "refusal_f1": 0.72,
+        "refusal_precision": 0.8182,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.913
+      },
+      {
+        "min_top_score": 0.1,
+        "min_term_coverage": 0.35,
+        "refusal_f1": 0.6923,
+        "refusal_precision": 0.75,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.8696
+      },
+      {
+        "min_top_score": 0.1,
+        "min_term_coverage": 0.5,
+        "refusal_f1": 0.6667,
+        "refusal_precision": 0.6923,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.8261
+      },
+      {
+        "min_top_score": 0.2,
+        "min_term_coverage": 0.0,
+        "refusal_f1": 0.72,
+        "refusal_precision": 0.8182,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.913
+      },
+      {
+        "min_top_score": 0.2,
+        "min_term_coverage": 0.2,
+        "refusal_f1": 0.72,
+        "refusal_precision": 0.8182,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.913
+      },
+      {
+        "min_top_score": 0.2,
+        "min_term_coverage": 0.35,
+        "refusal_f1": 0.6923,
+        "refusal_precision": 0.75,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.8696
+      },
+      {
+        "min_top_score": 0.2,
+        "min_term_coverage": 0.5,
+        "refusal_f1": 0.6667,
+        "refusal_precision": 0.6923,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.8261
+      },
+      {
+        "min_top_score": 0.3,
+        "min_term_coverage": 0.0,
+        "refusal_f1": 0.72,
+        "refusal_precision": 0.8182,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.913
+      },
+      {
+        "min_top_score": 0.3,
+        "min_term_coverage": 0.2,
+        "refusal_f1": 0.72,
+        "refusal_precision": 0.8182,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.913
+      },
+      {
+        "min_top_score": 0.3,
+        "min_term_coverage": 0.35,
+        "refusal_f1": 0.6923,
+        "refusal_precision": 0.75,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.8696
+      },
+      {
+        "min_top_score": 0.3,
+        "min_term_coverage": 0.5,
+        "refusal_f1": 0.6667,
+        "refusal_precision": 0.6923,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.8261
+      },
+      {
+        "min_top_score": 0.5,
+        "min_term_coverage": 0.0,
+        "refusal_f1": 0.72,
+        "refusal_precision": 0.8182,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.913
+      },
+      {
+        "min_top_score": 0.5,
+        "min_term_coverage": 0.2,
+        "refusal_f1": 0.72,
+        "refusal_precision": 0.8182,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.913
+      },
+      {
+        "min_top_score": 0.5,
+        "min_term_coverage": 0.35,
+        "refusal_f1": 0.6923,
+        "refusal_precision": 0.75,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.8696
+      },
+      {
+        "min_top_score": 0.5,
+        "min_term_coverage": 0.5,
+        "refusal_f1": 0.6667,
+        "refusal_precision": 0.6923,
+        "refusal_recall": 0.6429,
+        "answer_rate": 0.8261
+      }
+    ]
+  }
+}

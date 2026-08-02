@@ -1,0 +1,125 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: test (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev,ingest]"
+      - name: Lint
+        run: ruff check src tests app
+      - name: Format check
+        run: ruff format --check src tests
+      - name: Type check
+        run: mypy
+      - run: pytest --cov=filingqa --cov-report=term-missing
+
+  evaluate:
+    name: evaluation (committed corpus, no network)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev,ingest]"
+
+      # The parsed corpus is committed, so the whole evaluation re-runs with
+      # no EDGAR access and no model downloads. A change that quietly degrades
+      # retrieval or breaks a citation shows up as a failing build rather than
+      # as a stale table in the README.
+      - name: Rebuild gold set and score the held-out split
+        run: |
+          filingqa goldset
+          filingqa evaluate --split test --embedder hashing
+
+      - name: Enforce the citation guarantee
+        run: |
+          python - <<'PY'
+          import json, sys
+          data = json.load(open("evaluation/results/ablations-test.json"))
+          arm = next(a for a in data["arms"] if a["is_full_system"])
+          cites = arm["citations"]
+          print(json.dumps(cites, indent=2))
+
+          failures = []
+          if cites["citation_accuracy"] < 1.0:
+              failures.append(
+                  f"citation accuracy {cites['citation_accuracy']:.3f} < 1.0 "
+                  f"({cites['verified_citations']}/{cites['total_citations']} verified)"
+              )
+          if cites["answers_with_uncited_claims"] > 0:
+              failures.append(
+                  f"{cites['answers_with_uncited_claims']} answers contain an uncited claim"
+              )
+          if arm["refusal"]["refusal_precision"] < 0.8:
+              failures.append(
+                  f"refusal precision {arm['refusal']['refusal_precision']:.3f} < 0.80 - "
+                  "the system is refusing answerable questions"
+              )
+          if failures:
+              sys.exit("citation guarantee broken:\n  " + "\n  ".join(failures))
+          print("citation guarantee holds")
+          PY
+
+      - name: Verify every chunk span resolves
+        run: |
+          python - <<'PY'
+          from filingqa.chunking import chunk_corpus, verify_spans
+          from filingqa.ingest import load_corpus
+          filings = load_corpus("data/parsed")
+          problems = verify_spans(chunk_corpus(filings), filings)
+          if problems:
+              raise SystemExit(f"{len(problems)} chunk spans do not resolve:\n" + "\n".join(problems[:5]))
+          print(f"all chunk spans resolve across {len(filings)} filings")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: evaluation-results
+          path: evaluation/results/
+
+  package:
+    name: build and install the wheel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build
+      - run: python -m build
+      - name: Install the wheel in a clean venv
+        run: |
+          python -m venv /tmp/verify
+          /tmp/verify/bin/pip install dist/*.whl
+          cd /tmp && /tmp/verify/bin/python -c "
+          import filingqa
+          from filingqa.retrieval import HashingEmbedder
+          from filingqa.models import Citation
+          print('filingqa imports clean from the wheel')
+          "

@@ -1,0 +1,545 @@
+{
+  "generated_at": "2026-08-02T03:14:13+00:00",
+  "python": "3.10.12",
+  "split": "test",
+  "questions": 63,
+  "embedder": "hashing",
+  "arms": [
+    {
+      "arm": "bm25-plain",
+      "label": "BM25, no expansion",
+      "description": "Keyword search alone, without the financial synonym rewrite. The floor.",
+      "embedder": "hashing",
+      "reranker": "none",
+      "retrieval": {
+        "questions": 42,
+        "recall_at_k": {
+          "1": 0.2143,
+          "3": 0.3571,
+          "5": 0.4048,
+          "10": 0.4762,
+          "20": 0.5476
+        },
+        "set_recall_at_k": {
+          "1": 0.0437,
+          "3": 0.1033,
+          "5": 0.138,
+          "10": 0.1875,
+          "20": 0.2279
+        },
+        "precision_at_k": {
+          "1": 0.2143,
+          "3": 0.1667,
+          "5": 0.1333,
+          "10": 0.0929,
+          "20": 0.0571
+        },
+        "ndcg_at_k": {
+          "1": 0.1633,
+          "3": 0.1976,
+          "5": 0.1981,
+          "10": 0.1976,
+          "20": 0.204
+        },
+        "mrr": 0.3049
+      },
+      "refusal": {
+        "correctly_refused": 13,
+        "wrongly_refused": 2,
+        "missed_refusals": 8,
+        "correctly_answered": 40,
+        "refusal_precision": 0.8667,
+        "refusal_recall": 0.619,
+        "refusal_f1": 0.7222,
+        "answer_rate_on_answerable": 0.9524
+      },
+      "citations": {
+        "answers": 63,
+        "answered": 48,
+        "refused": 15,
+        "total_citations": 192,
+        "verified_citations": 192,
+        "citation_accuracy": 1.0,
+        "citations_per_answer": 4.0,
+        "answers_with_uncited_claims": 0,
+        "uncited_claim_count": 0
+      },
+      "latency_ms": {
+        "p50": 15.55,
+        "p95": 27.62,
+        "p99": 49.04,
+        "mean": 14.52
+      },
+      "is_full_system": false
+    },
+    {
+      "arm": "bm25-only",
+      "label": "BM25 + query expansion (shipped default on the offline stack)",
+      "description": "Keyword search with the financial tokeniser and synonym rewrite. The best-measured configuration when no neural model is installed, and therefore the default in that case.",
+      "embedder": "hashing",
+      "reranker": "none",
+      "retrieval": {
+        "questions": 42,
+        "recall_at_k": {
+          "1": 0.3095,
+          "3": 0.4762,
+          "5": 0.5476,
+          "10": 0.6429,
+          "20": 0.6667
+        },
+        "set_recall_at_k": {
+          "1": 0.0752,
+          "3": 0.2026,
+          "5": 0.2726,
+          "10": 0.3559,
+          "20": 0.376
+        },
+        "precision_at_k": {
+          "1": 0.3095,
+          "3": 0.2857,
+          "5": 0.2619,
+          "10": 0.1714,
+          "20": 0.0952
+        },
+        "ndcg_at_k": {
+          "1": 0.2585,
+          "3": 0.2951,
+          "5": 0.3245,
+          "10": 0.3232,
+          "20": 0.3209
+        },
+        "mrr": 0.423
+      },
+      "refusal": {
+        "correctly_refused": 13,
+        "wrongly_refused": 1,
+        "missed_refusals": 8,
+        "correctly_answered": 41,
+        "refusal_precision": 0.9286,
+        "refusal_recall": 0.619,
+        "refusal_f1": 0.7429,
+        "answer_rate_on_answerable": 0.9762
+      },
+      "citations": {
+        "answers": 63,
+        "answered": 49,
+        "refused": 14,
+        "total_citations": 193,
+        "verified_citations": 193,
+        "citation_accuracy": 1.0,
+        "citations_per_answer": 3.938775510204082,
+        "answers_with_uncited_claims": 0,
+        "uncited_claim_count": 0
+      },
+      "latency_ms": {
+        "p50": 15.65,
+        "p95": 27.84,
+        "p99": 42.57,
+        "mean": 14.48
+      },
+      "is_full_system": true
+    },
+    {
+      "arm": "dense-only",
+      "label": "Dense only",
+      "description": "Bi-encoder retrieval alone. No keyword matching, no reranker.",
+      "embedder": "hashing",
+      "reranker": "none",
+      "retrieval": {
+        "questions": 42,
+        "recall_at_k": {
+          "1": 0.2381,
+          "3": 0.4048,
+          "5": 0.4048,
+          "10": 0.4762,
+          "20": 0.5238
+        },
+        "set_recall_at_k": {
+          "1": 0.0755,
+          "3": 0.1265,
+          "5": 0.1746,
+          "10": 0.1962,
+          "20": 0.2174
+        },
+        "precision_at_k": {
+          "1": 0.2381,
+          "3": 0.1746,
+          "5": 0.1381,
+          "10": 0.081,
+          "20": 0.0464
+        },
+        "ndcg_at_k": {
+          "1": 0.1497,
+          "3": 0.1627,
+          "5": 0.1761,
+          "10": 0.18,
+          "20": 0.1819
+        },
+        "mrr": 0.3327
+      },
+      "refusal": {
+        "correctly_refused": 13,
+        "wrongly_refused": 2,
+        "missed_refusals": 8,
+        "correctly_answered": 40,
+        "refusal_precision": 0.8667,
+        "refusal_recall": 0.619,
+        "refusal_f1": 0.7222,
+        "answer_rate_on_answerable": 0.9524
+      },
+      "citations": {
+        "answers": 63,
+        "answered": 48,
+        "refused": 15,
+        "total_citations": 182,
+        "verified_citations": 182,
+        "citation_accuracy": 1.0,
+        "citations_per_answer": 3.7916666666666665,
+        "answers_with_uncited_claims": 0,
+        "uncited_claim_count": 0
+      },
+      "latency_ms": {
+        "p50": 4.5,
+        "p95": 7.91,
+        "p99": 8.03,
+        "mean": 4.16
+      },
+      "is_full_system": false
+    },
+    {
+      "arm": "hybrid-no-rerank",
+      "label": "Hybrid (RRF), no reranker",
+      "description": "BM25 and dense fused by reciprocal rank fusion.",
+      "embedder": "hashing",
+      "reranker": "none",
+      "retrieval": {
+        "questions": 42,
+        "recall_at_k": {
+          "1": 0.2857,
+          "3": 0.5,
+          "5": 0.5476,
+          "10": 0.619,
+          "20": 0.6905
+        },
+        "set_recall_at_k": {
+          "1": 0.0742,
+          "3": 0.2011,
+          "5": 0.2568,
+          "10": 0.3207,
+          "20": 0.3817
+        },
+        "precision_at_k": {
+          "1": 0.2857,
+          "3": 0.254,
+          "5": 0.219,
+          "10": 0.1571,
+          "20": 0.0964
+        },
+        "ndcg_at_k": {
+          "1": 0.1701,
+          "3": 0.2621,
+          "5": 0.2748,
+          "10": 0.2858,
+          "20": 0.3005
+        },
+        "mrr": 0.4051
+      },
+      "refusal": {
+        "correctly_refused": 13,
+        "wrongly_refused": 1,
+        "missed_refusals": 8,
+        "correctly_answered": 41,
+        "refusal_precision": 0.9286,
+        "refusal_recall": 0.619,
+        "refusal_f1": 0.7429,
+        "answer_rate_on_answerable": 0.9762
+      },
+      "citations": {
+        "answers": 63,
+        "answered": 49,
+        "refused": 14,
+        "total_citations": 193,
+        "verified_citations": 193,
+        "citation_accuracy": 1.0,
+        "citations_per_answer": 3.938775510204082,
+        "answers_with_uncited_claims": 0,
+        "uncited_claim_count": 0
+      },
+      "latency_ms": {
+        "p50": 17.98,
+        "p95": 25.26,
+        "p99": 44.55,
+        "mean": 15.32
+      },
+      "is_full_system": false
+    },
+    {
+      "arm": "bm25-rerank",
+      "label": "BM25 + reranker",
+      "description": "Isolates the reranker's contribution without the dense retriever.",
+      "embedder": "hashing",
+      "reranker": "lexical",
+      "retrieval": {
+        "questions": 42,
+        "recall_at_k": {
+          "1": 0.3095,
+          "3": 0.4286,
+          "5": 0.5714,
+          "10": 0.619,
+          "20": 0.6667
+        },
+        "set_recall_at_k": {
+          "1": 0.0752,
+          "3": 0.1809,
+          "5": 0.2393,
+          "10": 0.3184,
+          "20": 0.3819
+        },
+        "precision_at_k": {
+          "1": 0.3095,
+          "3": 0.246,
+          "5": 0.2286,
+          "10": 0.1595,
+          "20": 0.0964
+        },
+        "ndcg_at_k": {
+          "1": 0.2585,
+          "3": 0.2748,
+          "5": 0.2909,
+          "10": 0.2982,
+          "20": 0.3092
+        },
+        "mrr": 0.4035
+      },
+      "refusal": {
+        "correctly_refused": 13,
+        "wrongly_refused": 1,
+        "missed_refusals": 8,
+        "correctly_answered": 41,
+        "refusal_precision": 0.9286,
+        "refusal_recall": 0.619,
+        "refusal_f1": 0.7429,
+        "answer_rate_on_answerable": 0.9762
+      },
+      "citations": {
+        "answers": 63,
+        "answered": 49,
+        "refused": 14,
+        "total_citations": 193,
+        "verified_citations": 193,
+        "citation_accuracy": 1.0,
+        "citations_per_answer": 3.938775510204082,
+        "answers_with_uncited_claims": 0,
+        "uncited_claim_count": 0
+      },
+      "latency_ms": {
+        "p50": 19.12,
+        "p95": 62.41,
+        "p99": 69.02,
+        "mean": 21.99
+      },
+      "is_full_system": false
+    },
+    {
+      "arm": "hybrid-no-filters",
+      "label": "Hybrid + reranker, no metadata filters",
+      "description": "Full pipeline with company/year filtering disabled.",
+      "embedder": "hashing",
+      "reranker": "lexical",
+      "retrieval": {
+        "questions": 42,
+        "recall_at_k": {
+          "1": 0.1667,
+          "3": 0.3333,
+          "5": 0.381,
+          "10": 0.4286,
+          "20": 0.5714
+        },
+        "set_recall_at_k": {
+          "1": 0.0368,
+          "3": 0.1071,
+          "5": 0.1526,
+          "10": 0.2197,
+          "20": 0.2996
+        },
+        "precision_at_k": {
+          "1": 0.1667,
+          "3": 0.1508,
+          "5": 0.1286,
+          "10": 0.1,
+          "20": 0.0714
+        },
+        "ndcg_at_k": {
+          "1": 0.102,
+          "3": 0.1608,
+          "5": 0.1674,
+          "10": 0.1835,
+          "20": 0.2061
+        },
+        "mrr": 0.2706
+      },
+      "refusal": {
+        "correctly_refused": 13,
+        "wrongly_refused": 0,
+        "missed_refusals": 8,
+        "correctly_answered": 42,
+        "refusal_precision": 1.0,
+        "refusal_recall": 0.619,
+        "refusal_f1": 0.7647,
+        "answer_rate_on_answerable": 1.0
+      },
+      "citations": {
+        "answers": 63,
+        "answered": 50,
+        "refused": 13,
+        "total_citations": 200,
+        "verified_citations": 200,
+        "citation_accuracy": 1.0,
+        "citations_per_answer": 4.0,
+        "answers_with_uncited_claims": 0,
+        "uncited_claim_count": 0
+      },
+      "latency_ms": {
+        "p50": 36.88,
+        "p95": 61.41,
+        "p99": 213.39,
+        "mean": 37.42
+      },
+      "is_full_system": false
+    },
+    {
+      "arm": "no-expansion",
+      "label": "Full pipeline, no query expansion",
+      "description": "Everything except the financial synonym rewrite.",
+      "embedder": "hashing",
+      "reranker": "lexical",
+      "retrieval": {
+        "questions": 42,
+        "recall_at_k": {
+          "1": 0.1667,
+          "3": 0.3095,
+          "5": 0.4524,
+          "10": 0.4762,
+          "20": 0.5476
+        },
+        "set_recall_at_k": {
+          "1": 0.0461,
+          "3": 0.0839,
+          "5": 0.1357,
+          "10": 0.1849,
+          "20": 0.2603
+        },
+        "precision_at_k": {
+          "1": 0.1667,
+          "3": 0.127,
+          "5": 0.1286,
+          "10": 0.0905,
+          "20": 0.0643
+        },
+        "ndcg_at_k": {
+          "1": 0.1224,
+          "3": 0.1542,
+          "5": 0.1802,
+          "10": 0.1828,
+          "20": 0.2043
+        },
+        "mrr": 0.2712
+      },
+      "refusal": {
+        "correctly_refused": 13,
+        "wrongly_refused": 2,
+        "missed_refusals": 8,
+        "correctly_answered": 40,
+        "refusal_precision": 0.8667,
+        "refusal_recall": 0.619,
+        "refusal_f1": 0.7222,
+        "answer_rate_on_answerable": 0.9524
+      },
+      "citations": {
+        "answers": 63,
+        "answered": 48,
+        "refused": 15,
+        "total_citations": 192,
+        "verified_citations": 192,
+        "citation_accuracy": 1.0,
+        "citations_per_answer": 4.0,
+        "answers_with_uncited_claims": 0,
+        "uncited_claim_count": 0
+      },
+      "latency_ms": {
+        "p50": 25.16,
+        "p95": 76.23,
+        "p99": 100.68,
+        "mean": 29.12
+      },
+      "is_full_system": false
+    },
+    {
+      "arm": "full-hybrid",
+      "label": "Hybrid + reranker (default once a neural embedder is present)",
+      "description": "Everything on. Measured worse than BM25 alone with the offline embedder, which is why it is not the default in that case.",
+      "embedder": "hashing",
+      "reranker": "lexical",
+      "retrieval": {
+        "questions": 42,
+        "recall_at_k": {
+          "1": 0.2857,
+          "3": 0.4524,
+          "5": 0.5238,
+          "10": 0.619,
+          "20": 0.6905
+        },
+        "set_recall_at_k": {
+          "1": 0.0742,
+          "3": 0.165,
+          "5": 0.214,
+          "10": 0.328,
+          "20": 0.3936
+        },
+        "precision_at_k": {
+          "1": 0.2857,
+          "3": 0.2302,
+          "5": 0.2,
+          "10": 0.169,
+          "20": 0.1012
+        },
+        "ndcg_at_k": {
+          "1": 0.1701,
+          "3": 0.2398,
+          "5": 0.2518,
+          "10": 0.2813,
+          "20": 0.2963
+        },
+        "mrr": 0.3895
+      },
+      "refusal": {
+        "correctly_refused": 13,
+        "wrongly_refused": 1,
+        "missed_refusals": 8,
+        "correctly_answered": 41,
+        "refusal_precision": 0.9286,
+        "refusal_recall": 0.619,
+        "refusal_f1": 0.7429,
+        "answer_rate_on_answerable": 0.9762
+      },
+      "citations": {
+        "answers": 63,
+        "answered": 49,
+        "refused": 14,
+        "total_citations": 193,
+        "verified_citations": 193,
+        "citation_accuracy": 1.0,
+        "citations_per_answer": 3.938775510204082,
+        "answers_with_uncited_claims": 0,
+        "uncited_claim_count": 0
+      },
+      "latency_ms": {
+        "p50": 23.27,
+        "p95": 54.26,
+        "p99": 95.4,
+        "mean": 27.08
+      },
+      "is_full_system": false
+    }
+  ]
+}

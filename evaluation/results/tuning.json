@@ -1,0 +1,29 @@
+{
+  "bm25_b": {
+    "parameter": "bm25_b",
+    "points": [
+      {
+        "value": 0.0,
+        "score": 0.8261
+      },
+      {
+        "value": 0.25,
+        "score": 0.8261
+      },
+      {
+        "value": 0.5,
+        "score": 0.8261
+      },
+      {
+        "value": 0.75,
+        "score": 0.8261
+      },
+      {
+        "value": 1.0,
+        "score": 0.7826
+      }
+    ],
+    "best_value": 0.0,
+    "best_score": 0.8261
+  }
+}
