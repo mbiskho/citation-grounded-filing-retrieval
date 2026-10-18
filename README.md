@@ -10,6 +10,10 @@ the system refuses when the corpus does not cover the question.
 An unsourced number is useless in a credit memo. So an answer that cannot be
 sourced is not returned.
 
+![Citation-grounded filing retrieval project overview](reports/project-overview.png)
+
+![Citation-grounded filing retrieval workflow](reports/workflow.png)
+
 ```bash
 pip install -e ".[ingest]"
 filingqa ingest          # 9 filings from EDGAR: Apple, JPMorgan, Ford x 3 years
